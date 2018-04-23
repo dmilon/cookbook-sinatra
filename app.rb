@@ -34,8 +34,13 @@ post '/recipes' do
   erb :index
 end
 get '/destroy:index' do
-  # binding.pry
   @cookbook = cookbook
   @cookbook.remove_at(params["index"].to_i)
   erb :index
+end
+get '/import' do
+  erb :import
+end
+post '/import:keyword' do
+  first_five = ScrapeMarmiton.call(params["keyword"])
 end
